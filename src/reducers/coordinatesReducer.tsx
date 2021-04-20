@@ -1,11 +1,9 @@
-import { CoordinatesActionType } from "../actions/Actions"
+import { CoordinatesActionType } from "../actions/CoordinateActions"
 
 const coordinatesReducer = (state = {}, action:CoordinatesActionType ) => {
     switch (action.type) {
      case 'COORDINATES_ACTION':
-      return {
-       result: action.payload
-      }
+      return action.payload
      default:
       return state
     }

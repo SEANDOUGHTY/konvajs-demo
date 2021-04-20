@@ -15,3 +15,4 @@ export const coordinatesAction = (coordinates:Coordinates) => (dispatch: any) =>
         payload: coordinates
     })
 }
+
