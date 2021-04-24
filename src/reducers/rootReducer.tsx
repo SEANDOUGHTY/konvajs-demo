@@ -3,7 +3,7 @@
 */
 import { combineReducers } from 'redux';
 import coordinatesReducer from './coordinatesReducer';
-import drawerReducer from './DrawerReducer';
+import drawerReducer from './MetaDataEditorReducer';
 
 const rootReducer = combineReducers({
     coordinates: coordinatesReducer,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stage, Layer } from 'react-konva';
 import { coordinatesAction } from './actions/CoordinateActions'
-import { drawerAction } from './actions/DrawerActions'
+import { drawerAction } from './actions/MetaDataEditorActions'
 import { useSelector, useDispatch} from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import MetaDataEditor from './components/MetaDataEditor'

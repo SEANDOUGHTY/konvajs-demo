@@ -5,7 +5,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
-import { DrawerStateProps } from './actions/DrawerActions'
+import { DrawerStateProps } from './actions/MetaDataEditorActions'
 
 export interface ReduxState {
   coordinates :

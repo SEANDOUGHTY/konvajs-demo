@@ -1,4 +1,4 @@
-import { DrawerActionType } from "../actions/DrawerActions"
+import { DrawerActionType } from "../actions/MetaDataEditorActions"
 
 const drawerReducer = (state = {}, action:DrawerActionType ) => {
     switch (action.type) {
