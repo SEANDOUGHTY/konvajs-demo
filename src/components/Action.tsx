@@ -1,7 +1,7 @@
 import { Group, Circle, StageProps } from 'react-konva';
 import { Coordinates } from '../actions/CoordinateActions';
 
-interface ActionProps extends StageProps {
+export interface ActionProps extends StageProps {
     coordinates: Coordinates
 }
 

@@ -2,11 +2,11 @@
  src/reducers/rootReducer.js
 */
 import { combineReducers } from 'redux';
-import coordinatesReducer from './coordinatesReducer';
 import drawerReducer from './MetaDataEditorReducer';
+import CanvasObjectReducer from './CanvasObjectReducer';
 
 const rootReducer = combineReducers({
-    coordinates: coordinatesReducer,
+    canvasObjectsState: CanvasObjectReducer,
     drawerState: drawerReducer
 });
 

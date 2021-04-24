@@ -1,26 +1,34 @@
 import React from 'react';
 import { Stage, Layer } from 'react-konva';
-import { coordinatesAction } from './actions/CoordinateActions'
 import { drawerAction } from './actions/MetaDataEditorActions'
+import { CanvasObjectAction } from './actions/CanvasObjectActions'
 import { useSelector, useDispatch} from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import MetaDataEditor from './components/MetaDataEditor'
 import { ReduxState } from './store';
 import { Action } from './components/Action'
 
-const selectCoordinates = (state:ReduxState) => state.coordinates
+const selectCanvasObjectsState = (state: ReduxState) => {
+ return( state.canvasObjectsState)
+}
 const selectDrawerState = (state:ReduxState) => state.drawerState
 
 const App = () => {
-
+ 
   const dispatch = useDispatch()
 
-  const coordinates = useSelector(selectCoordinates)
+  const CanvasObjects = useSelector(selectCanvasObjectsState)
   const drawerState = useSelector(selectDrawerState)
 
   // Action
   const handleDrag = (e: any) => {
-    dispatch(coordinatesAction({x: e.target.attrs.x, y: e.target.attrs.y}))
+    var updateObject = { ...CanvasObjects }
+    updateObject['8cd20c04-a544-11eb-bcbc-0242ac130002'].coordinates = {
+      x: e.target.attrs.x,
+      y: e.target.attrs.y
+    }
+
+    dispatch(CanvasObjectAction(updateObject))
   }
 
   const toggleDrawer = (e: any) => {
@@ -50,7 +58,11 @@ const App = () => {
             }}>
             <Stage width={window.innerWidth*0.6} height={window.innerHeight*0.6}>
             <Layer>
-              <Action coordinates={coordinates} onDragMove={handleDrag} onClick={toggleDrawer} />
+              <Action
+                coordinates={CanvasObjects['8cd20c04-a544-11eb-bcbc-0242ac130002'].coordinates}
+                onDragMove={handleDrag}
+                onClick={toggleDrawer} 
+              />
             </Layer>
             </Stage>
           </div>

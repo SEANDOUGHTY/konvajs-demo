@@ -6,33 +6,30 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
 import { DrawerStateProps } from './actions/MetaDataEditorActions'
+import { ActionProps } from './components/Action'
 
 export interface ReduxState {
-  coordinates :
-    { 
-      x: number,
-      y: number
-    },
+  canvasObjectsState: {[id: string]: ActionProps}
   drawerState: DrawerStateProps
 }
 
 export default function configureStore(initialState =
   {
-    '8cd20c04-a544-11eb-bcbc-0242ac130002': {
-      objectType: 'action',
-      coordinates: {
-        x: 200,
-        y: 200
+    canvasObjectsState: {
+      '8cd20c04-a544-11eb-bcbc-0242ac130002': {
+        coordinates: {
+          x: 200,
+          y: 200
+        }
+      },
+      '8cd20e2a-a544-11eb-bcbc-0242ac130002': {
+        coordinates: {
+          x: 300,
+          y: 300
+        }
       }
     },
-    '8cd20e2a-a544-11eb-bcbc-0242ac130002': {
-      objectType: 'action',
-      coordinates: {
-        x: 300,
-        y: 300
-      }
-    },
-    'drawerState': {
+    drawerState: {
         active: false,
         object: null,
     }
