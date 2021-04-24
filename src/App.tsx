@@ -1,11 +1,12 @@
 import React from 'react';
-import { Stage, Layer, Group, Circle } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import { coordinatesAction } from './actions/CoordinateActions'
 import { drawerAction } from './actions/DrawerActions'
 import { useSelector, useDispatch} from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import MetaDataEditor from './components/MetaDataEditor'
 import { ReduxState } from './store';
+import { Action } from './components/Action'
 
 const selectCoordinates = (state:ReduxState) => state.coordinates
 const selectDrawerState = (state:ReduxState) => state.drawerState
@@ -45,9 +46,7 @@ const App = () => {
             }}>
             <Stage width={window.innerWidth*0.6} height={window.innerHeight*0.6}>
             <Layer>
-              <Group x={coordinates.x} y={coordinates.y} draggable onDragMove={handleDrag} onClick={toggleDrawer} >
-                  <Circle radius={50} fill="green" />
-              </Group>
+              <Action coordinates={coordinates} onDragMove={handleDrag} onClick={toggleDrawer} />
             </Layer>
             </Stage>
           </div>
