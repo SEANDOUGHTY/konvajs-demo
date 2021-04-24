@@ -1,7 +1,8 @@
 import { Drawer, DrawerProps } from '@material-ui/core'
+import {DrawerStateProps } from '../actions/DrawerActions'
 
 interface MetaDataEditorProps extends DrawerProps {
-    drawerState: boolean,
+    drawerState: DrawerStateProps,
 }
 
 const MetaDataEditor = ({drawerState, anchor}:MetaDataEditorProps) => {
@@ -14,7 +15,7 @@ const MetaDataEditor = ({drawerState, anchor}:MetaDataEditorProps) => {
 
     return (
         <Drawer anchor={anchorPosition} 
-                open={drawerState} 
+                open={drawerState.active} 
                 variant='persistent'> 
                 
                 {payload}

@@ -24,7 +24,11 @@ const App = () => {
   }
 
   const toggleDrawer = (e: any) => {
-    dispatch(drawerAction(!drawerState))
+    
+    dispatch(drawerAction({
+      object: drawerState.active ? null : 'some id',
+      active: !drawerState.active
+    }))
   }
 
   // View
@@ -34,7 +38,7 @@ const App = () => {
 
       <Container>
         <Row>
-          <div style={{ textAlign:"center"}}><h1>Welcome to My Canvas</h1></div>  
+          <div style={{ textAlign:"center"}}><h1>Perimeter Canvas POC</h1></div>  
         </Row>
 
         <Row>

@@ -5,6 +5,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
+import { DrawerStateProps } from './actions/DrawerActions'
 
 export interface ReduxState {
   coordinates :
@@ -12,16 +13,31 @@ export interface ReduxState {
       x: number,
       y: number
     },
-  drawerState: boolean
+  drawerState: DrawerStateProps
 }
 
-export default function configureStore(initialState=
-  { coordinates : 
-    { x: 200,
-      y: 200
+export default function configureStore(initialState =
+  {
+    '8cd20c04-a544-11eb-bcbc-0242ac130002': {
+      objectType: 'action',
+      coordinates: {
+        x: 200,
+        y: 200
+      }
     },
-    drawerState: false
-  }) 
+    '8cd20e2a-a544-11eb-bcbc-0242ac130002': {
+      objectType: 'action',
+      coordinates: {
+        x: 300,
+        y: 300
+      }
+    },
+    'drawerState': {
+        active: false,
+        object: null,
+    }
+  })
+
  {
 
  return createStore(
