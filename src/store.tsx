@@ -20,13 +20,17 @@ export default function configureStore(initialState =
         coordinates: {
           x: 200,
           y: 200
-        }
+        },
+        id: '8cd20c04-a544-11eb-bcbc-0242ac130002',
+        actionName: 'Untitled1'
       },
       '8cd20e2a-a544-11eb-bcbc-0242ac130002': {
         coordinates: {
           x: 300,
           y: 300
-        }
+        },
+        id: '8cd20e2a-a544-11eb-bcbc-0242ac130002',
+        actionName: 'Untitled2'
       }
     },
     MetaDataEditorState: {

@@ -16,7 +16,7 @@ const MetaDataEditor = ({MetaDataEditorState, anchor}:MetaDataEditorProps) => {
                 open={MetaDataEditorState.active} 
                 variant='persistent'> 
                 
-            {<div>
+            {<div style={{margin:"10p"}}>
                 <h1>{MetaDataEditorState.object}</h1>
                 <TextField id="outlined-basic" label="A Field" variant="outlined" />
                 </div>}

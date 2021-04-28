@@ -3,7 +3,7 @@ import { Stage, Layer } from 'react-konva';
 import { MetaDataEditorAction } from './actions/MetaDataEditorActions'
 import { CanvasObjectAction } from './actions/CanvasObjectActions'
 import { useSelector, useDispatch} from 'react-redux'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import MetaDataEditor from './components/MetaDataEditor'
 import { ReduxState } from './store';
 import { Action } from './components/Action'
@@ -23,7 +23,7 @@ const App = () => {
   // Action
   const handleDrag = (e: any) => {
     var updateObject = { ...CanvasObjects }
-    updateObject['8cd20c04-a544-11eb-bcbc-0242ac130002'].coordinates = {
+    updateObject[e.target.attrs.id].coordinates = {
       x: e.target.attrs.x,
       y: e.target.attrs.y
     }
@@ -32,10 +32,12 @@ const App = () => {
   }
 
   const toggleMetaDataEditor = (e: any) => {
-    
+    e.preventDefault();
+    const newActive = (MetaDataEditorState.object === e.currentTarget.attrs.actionName) ? false : true
+    const newObject = newActive ? e.currentTarget.attrs.actionName : null
     dispatch(MetaDataEditorAction({
-      object: MetaDataEditorState.active ? null : 'some id',
-      active: !MetaDataEditorState.active
+      object: newObject,
+      active: newActive
     }))
   }
 
@@ -50,32 +52,32 @@ const App = () => {
         </Row>
 
         <Row>
-          <Col>
           <div style={{
             backgroundColor: "#f8f4e1",
-            width: "60%",
+            width: "90%",
             margin:"auto"
             }}>
-            <Stage width={window.innerWidth*0.6} height={window.innerHeight*0.6}>
+            <Stage width={window.innerWidth*0.9} height={window.innerHeight*0.6}>
             <Layer>
               <Action
                 coordinates={CanvasObjects['8cd20c04-a544-11eb-bcbc-0242ac130002'].coordinates}
+                id={CanvasObjects['8cd20c04-a544-11eb-bcbc-0242ac130002'].id}
+                actionName={CanvasObjects['8cd20c04-a544-11eb-bcbc-0242ac130002'].actionName}
                 onDragMove={handleDrag}
                 onClick={toggleMetaDataEditor} 
                   />
               <Action
                 coordinates={CanvasObjects['8cd20e2a-a544-11eb-bcbc-0242ac130002'].coordinates}
+                id={CanvasObjects['8cd20e2a-a544-11eb-bcbc-0242ac130002'].id}
+                actionName={CanvasObjects['8cd20e2a-a544-11eb-bcbc-0242ac130002'].actionName}
                 onDragMove={handleDrag}
                 onClick={toggleMetaDataEditor} 
               />
             </Layer>
             </Stage>
+           <MetaDataEditor MetaDataEditorState={MetaDataEditorState}/>
           </div>
-          </Col>
         
-          <Col>
-            <MetaDataEditor MetaDataEditorState={MetaDataEditorState}/>
-          </Col>
         </Row>
       </Container>
 

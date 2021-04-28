@@ -1,6 +1,6 @@
 import { MetaDataEditorActionType } from "../actions/MetaDataEditorActions"
 
-const drawerReducer = (state = {}, action:MetaDataEditorActionType ) => {
+const MetaDataEditorReducer = (state = {}, action:MetaDataEditorActionType ) => {
     switch (action.type) {
         case 'DRAWER_ACTION':
             return action.payload
@@ -9,4 +9,4 @@ const drawerReducer = (state = {}, action:MetaDataEditorActionType ) => {
         }
     }
 
-export default drawerReducer
+export default MetaDataEditorReducer
