@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage, Layer } from 'react-konva';
-import { drawerAction } from './actions/MetaDataEditorActions'
+import { MetaDataEditorAction } from './actions/MetaDataEditorActions'
 import { CanvasObjectAction } from './actions/CanvasObjectActions'
 import { useSelector, useDispatch} from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -11,14 +11,14 @@ import { Action } from './components/Action'
 const selectCanvasObjectsState = (state: ReduxState) => {
  return( state.canvasObjectsState)
 }
-const selectDrawerState = (state:ReduxState) => state.drawerState
+const selectMetaDataEditorState = (state:ReduxState) => state.MetaDataEditorState
 
 const App = () => {
  
   const dispatch = useDispatch()
 
   const CanvasObjects = useSelector(selectCanvasObjectsState)
-  const drawerState = useSelector(selectDrawerState)
+  const MetaDataEditorState = useSelector(selectMetaDataEditorState)
 
   // Action
   const handleDrag = (e: any) => {
@@ -31,11 +31,11 @@ const App = () => {
     dispatch(CanvasObjectAction(updateObject))
   }
 
-  const toggleDrawer = (e: any) => {
+  const toggleMetaDataEditor = (e: any) => {
     
-    dispatch(drawerAction({
-      object: drawerState.active ? null : 'some id',
-      active: !drawerState.active
+    dispatch(MetaDataEditorAction({
+      object: MetaDataEditorState.active ? null : 'some id',
+      active: !MetaDataEditorState.active
     }))
   }
 
@@ -61,7 +61,12 @@ const App = () => {
               <Action
                 coordinates={CanvasObjects['8cd20c04-a544-11eb-bcbc-0242ac130002'].coordinates}
                 onDragMove={handleDrag}
-                onClick={toggleDrawer} 
+                onClick={toggleMetaDataEditor} 
+                  />
+              <Action
+                coordinates={CanvasObjects['8cd20e2a-a544-11eb-bcbc-0242ac130002'].coordinates}
+                onDragMove={handleDrag}
+                onClick={toggleMetaDataEditor} 
               />
             </Layer>
             </Stage>
@@ -69,7 +74,7 @@ const App = () => {
           </Col>
         
           <Col>
-            <MetaDataEditor drawerState={drawerState}/>
+            <MetaDataEditor MetaDataEditorState={MetaDataEditorState}/>
           </Col>
         </Row>
       </Container>

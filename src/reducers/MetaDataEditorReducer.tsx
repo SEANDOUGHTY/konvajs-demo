@@ -1,6 +1,6 @@
-import { DrawerActionType } from "../actions/MetaDataEditorActions"
+import { MetaDataEditorActionType } from "../actions/MetaDataEditorActions"
 
-const drawerReducer = (state = {}, action:DrawerActionType ) => {
+const drawerReducer = (state = {}, action:MetaDataEditorActionType ) => {
     switch (action.type) {
         case 'DRAWER_ACTION':
             return action.payload

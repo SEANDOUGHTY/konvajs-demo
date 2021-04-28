@@ -5,12 +5,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
-import { DrawerStateProps } from './actions/MetaDataEditorActions'
+import { MetaDataEditorStateProps } from './actions/MetaDataEditorActions'
 import { ActionProps } from './components/Action'
 
 export interface ReduxState {
   canvasObjectsState: {[id: string]: ActionProps}
-  drawerState: DrawerStateProps
+  MetaDataEditorState: MetaDataEditorStateProps
 }
 
 export default function configureStore(initialState =
@@ -29,7 +29,7 @@ export default function configureStore(initialState =
         }
       }
     },
-    drawerState: {
+    MetaDataEditorState: {
         active: false,
         object: null,
     }

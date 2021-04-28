@@ -1,17 +1,17 @@
 
-export interface DrawerStateProps {
+export interface MetaDataEditorStateProps {
     active: boolean,
     object: string | null
 }
 
-export type DrawerActionType = {
+export type MetaDataEditorActionType = {
     type: string;
-    payload: DrawerStateProps;
+    payload: MetaDataEditorStateProps;
 };
 
-export const drawerAction = (DrawerState:DrawerStateProps) => (dispatch:any) => {
+export const MetaDataEditorAction = (MetaDataEditorState:MetaDataEditorStateProps) => (dispatch:any) => {
     dispatch({
         type: 'DRAWER_ACTION',
-        payload: DrawerState
+        payload: MetaDataEditorState
     })
 }

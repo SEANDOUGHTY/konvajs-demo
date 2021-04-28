@@ -2,12 +2,12 @@
  src/reducers/rootReducer.js
 */
 import { combineReducers } from 'redux';
-import drawerReducer from './MetaDataEditorReducer';
+import MetaDataEditorReducer from './MetaDataEditorReducer';
 import CanvasObjectReducer from './CanvasObjectReducer';
 
 const rootReducer = combineReducers({
     canvasObjectsState: CanvasObjectReducer,
-    drawerState: drawerReducer
+    MetaDataEditorState: MetaDataEditorReducer
 });
 
 export default rootReducer
